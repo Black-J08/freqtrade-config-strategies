@@ -3,6 +3,7 @@
     "stake_currency": "BUSD",
     "stake_amount": 12,
     "tradable_balance_ratio": 0.99,
+    "amend_last_stake_amount": true,
     "fiat_display_currency": "INR",
     "dry_run": true,
     "cancel_open_orders_on_exit": false,
@@ -37,10 +38,29 @@
     "pairlists": [
         {
             "method": "VolumePairList",
-            "number_assets": 20,
+            "number_assets": 120,
             "sort_key": "quoteVolume",
             "min_value": 0,
-            "refresh_period": 1800
+            "refresh_period": 1440,
+            "loopback_period": 365
+        },
+        {
+            "method": "AgeFilter",
+            "min_days_listed": 100
+        },
+        {
+            "method": "PerformanceFilter",
+            "minutes": 10080
+        },
+        {
+            "method": "PrecisionFilter"
+        },
+        {
+            "method": "VolatilityFilter",
+            "lookback_days": 10,
+            "min_volatility": 0.04,
+            "max_volatility": 0.60,
+            "refresh_period": 86400
         }
     ],
     "edge": {
